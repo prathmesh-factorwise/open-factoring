@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OpenFactoring.net</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Inter,sans-serif;background:#f7fbff;color:#18324a}
+header{position:fixed;top:0;width:100%;padding:18px 7%;display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid #e6eef6;z-index:10}
+.logo{font-weight:800;font-size:28px;color:#165dbe}
+nav a{text-decoration:none;color:#3f566f;margin-left:24px;font-weight:600}
+.hero{height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 8%;background:
+radial-gradient(circle at top,#e8f4ff 0,#f7fbff 55%,#fff 100%);position:relative;overflow:hidden}
+.gridbg{position:absolute;inset:0;background-image:
+linear-gradient(rgba(22,93,190,.05) 1px,transparent 1px),
+linear-gradient(90deg,rgba(22,93,190,.05) 1px,transparent 1px);
+background-size:60px 60px;animation:drift 18s linear infinite}
+.glow{position:absolute;width:520px;height:520px;border-radius:50%;
+background:radial-gradient(circle,rgba(54,145,255,.18),transparent 70%);
+filter:blur(20px);animation:pulse 8s ease-in-out infinite}
+.heroContent{position:relative;max-width:900px;z-index:2}
+h1{font-size:64px;line-height:1.05;margin-bottom:24px}
+p{color:#60748a;font-size:20px}
+.buttons{margin-top:34px}
+.btn{display:inline-block;padding:15px 30px;border-radius:999px;text-decoration:none;font-weight:700;margin:8px}
+.primary{background:#165dbe;color:#fff}
+.secondary{border:1px solid #165dbe;color:#165dbe;background:#fff}
+section{padding:90px 8%}
+h2{text-align:center;font-size:40px;margin-bottom:12px}
+.sub{max-width:820px;text-align:center;margin:0 auto 50px;color:#60748a}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
+.card{background:#fff;border:1px solid #e4edf7;border-radius:18px;padding:28px;box-shadow:0 12px 30px rgba(0,0,0,.04);transition:.35s}
+.card:hover{transform:translateY(-6px)}
+.card h3{margin-bottom:10px;font-size:20px;color:#165dbe}
+.flow{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:10px}
+.step{padding:16px 20px;background:#fff;border:1px solid #dce8f5;border-radius:12px;font-weight:600}
+.arrow{color:#165dbe;font-size:22px}
+table{width:100%;border-collapse:collapse;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.04)}
+th,td{padding:18px;border:1px solid #e5edf6}
+th{background:#165dbe;color:#fff}
+footer{padding:70px 20px;background:#102d52;color:#fff;text-align:center}
+.reveal{opacity:0;transform:translateY(30px);transition:all .8s ease}
+.reveal.show{opacity:1;transform:none}
+@keyframes drift{from{transform:translateY(0)}to{transform:translateY(60px)}}
+@keyframes pulse{50%{transform:scale(1.08);opacity:.7}}
+
+/* ---------- Responsive ---------- */
+@media (max-width:992px){
+  h1{font-size:48px}
+  h2{font-size:34px}
+  p{font-size:18px}
+  header{padding:16px 5%}
+  section{padding:72px 5%}
+}
+@media (max-width:768px){
+  header{
+    position:sticky;
+    flex-direction:column;
+    gap:12px;
+    padding:14px 20px;
+  }
+  nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:12px;
+  }
+  nav a{
+    margin:0;
+    font-size:14px;
+  }
+  .hero{
+    min-height:100vh;
+    height:auto;
+    padding:120px 24px 70px;
+  }
+  h1{
+    font-size:38px;
+    line-height:1.15;
+  }
+  h2{
+    font-size:30px;
+  }
+  p,.sub{
+    font-size:16px;
+  }
+  .buttons{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+  .btn{
+    width:100%;
+    max-width:320px;
+    text-align:center;
+    margin:8px 0;
+  }
+  .cards{
+    grid-template-columns:1fr;
+  }
+  .flow{
+    flex-direction:column;
+    align-items:stretch;
+  }
+  .arrow{
+    transform:rotate(90deg);
+    text-align:center;
+  }
+  .step{
+    text-align:center;
+  }
+  table{
+    display:block;
+    overflow-x:auto;
+    white-space:nowrap;
+  }
+  footer{
+    padding:50px 24px;
+  }
+}
+@media (max-width:480px){
+  h1{font-size:32px}
+  h2{font-size:26px}
+  .logo{font-size:24px}
+}
+
+</style>
+</head>
+<body>
+<header>
+<div class="logo">OpenFactoring</div>
+<nav>
+<a href="#challenges">Challenges</a>
+<a href="#solution">Solution</a>
+<a href="#architecture">Architecture</a>
+<a href="#comparison">Comparison</a>
+</nav>
+</header>
+
+<section class="hero">
+<div class="gridbg"></div>
+<div class="glow"></div>
+<div class="heroContent reveal">
+<h1>The Open Network for Global Invoice Finance</h1>
+<p>An interoperable protocol inspired by Beckn principles, enabling banks, factors, fintechs and invoice registries to exchange financing opportunities through open standards instead of proprietary marketplaces.</p>
+<div class="buttons">
+<a href="#solution" class="btn primary">Explore the Protocol</a>
+<a href="#architecture" class="btn secondary">Reference Architecture</a>
+</div>
+</div>
+</section>
+
+<section id="challenges" class="reveal">
+<h2>Industry Challenges</h2>
+<p class="sub">Global invoice finance continues to rely on fragmented technology stacks, creating friction, duplicate integrations and limited liquidity.</p>
+<div class="cards">
+<div class="card"><h3>Fragmented Ecosystems</h3><p>Financial institutions participate in isolated proprietary platforms.</p></div>
+<div class="card"><h3>Duplicate Invoice Risk</h3><p>No universal mechanism to verify financing across networks.</p></div>
+<div class="card"><h3>Costly Integrations</h3><p>Every marketplace requires independent API implementation.</p></div>
+<div class="card"><h3>Vendor Lock-In</h3><p>Closed ecosystems reduce competition and innovation.</p></div>
+</div>
+</section>
+
+<section id="solution" class="reveal">
+<h2>OpenFactoring</h2>
+<p class="sub">A protocol-driven ecosystem connecting participants through standardized interfaces.</p>
+<div class="cards">
+<div class="card"><h3>Open Discovery</h3><p>Discover financing opportunities across participating institutions.</p></div>
+<div class="card"><h3>Shared Registry</h3><p>Increase transparency through interoperable invoice visibility.</p></div>
+<div class="card"><h3>Open APIs</h3><p>Build once and connect across the ecosystem.</p></div>
+</div>
+</section>
+
+<section id="architecture" class="reveal">
+<h2>Reference Architecture</h2>
+<div class="flow">
+<div class="step">Supplier ERP</div><div class="arrow">→</div>
+<div class="step">Invoice Registry</div><div class="arrow">→</div>
+<div class="step">OpenFactoring Network</div><div class="arrow">→</div>
+<div class="step">Banks & Factors</div><div class="arrow">→</div>
+<div class="step">Settlement</div>
+</div>
+</section>
+
+<section id="comparison" class="reveal">
+<h2>Traditional vs Open Network</h2>
+<table>
+<tr><th>Traditional Marketplace</th><th>OpenFactoring</th></tr>
+<tr><td>Closed integrations</td><td>Open protocol</td></tr>
+<tr><td>Platform ownership</td><td>Participant-owned ecosystem</td></tr>
+<tr><td>Multiple API integrations</td><td>Single interoperable interface</td></tr>
+<tr><td>Limited lender reach</td><td>Open lender discovery</td></tr>
+<tr><td>Proprietary registry</td><td>Shared registry model</td></tr>
+</table>
+</section>
+
+<footer>
+<h2>Build the Future of Invoice Finance</h2>
+<p>OpenFactoring.net</p>
+</footer>
+
+<script>
+const observer=new IntersectionObserver(entries=>{
+ entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show');});
+},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
